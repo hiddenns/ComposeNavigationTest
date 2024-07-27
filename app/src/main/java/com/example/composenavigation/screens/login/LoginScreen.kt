@@ -1,4 +1,4 @@
-package com.example.composenavigation.screens
+package com.example.composenavigation.screens.login
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,6 +13,8 @@ import androidx.compose.ui.Modifier
 fun LoginScreen(
     navigateToRegister: () -> Unit,
     navigateToResetPassword: () -> Unit,
+    showBottomNavigation: (isVisible: Boolean) -> Unit,
+    navigateToProfile: () -> Unit,
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -29,6 +31,21 @@ fun LoginScreen(
             navigateToResetPassword()
         }) {
             Text(text = "Go to Reset password")
+        }
+        Button(onClick = {
+            showBottomNavigation(true)
+        }) {
+            Text(text = "Show bottom nav")
+        }
+        Button(onClick = {
+            showBottomNavigation(false)
+        }) {
+            Text(text = "Hide bottom nav")
+        }
+        Button(onClick = {
+            navigateToProfile()
+        }) {
+            Text(text = "Navigate to profile")
         }
     }
 }

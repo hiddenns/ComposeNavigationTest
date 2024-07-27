@@ -1,4 +1,4 @@
-package com.example.composenavigation.screens
+package com.example.composenavigation.screens.main
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -20,11 +20,11 @@ fun ProfileScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Home Screen!")
+        Text(text = "Profile Screen!")
         Button(onClick = {
             navigateToSupport()
         }) {
-            Text(text = "Go to support")
+            Text(text = "Go to Support")
         }
         Button(onClick = {
             navigateToHome()

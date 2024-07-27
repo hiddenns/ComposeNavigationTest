@@ -1,4 +1,4 @@
-package com.example.composenavigation.screens
+package com.example.composenavigation.screens.login
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,9 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-fun SupportScreen(
-    navigateToHome: () -> Unit,
-    navigateToProfile: () -> Unit,
+fun RegisterScreen(
     navigateBack: () -> Unit,
 ) {
     Column(
@@ -20,17 +18,9 @@ fun SupportScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Home Screen!")
-        Button(onClick = {
-            navigateToHome()
-        }) {
-            Text(text = "Go to Home")
-        }
-        Button(onClick = {
-            navigateToProfile()
-        }) {
-            Text(text = "Go to Profile")
-        }
+        Text(
+            text = "Hello register!"
+        )
         Button(onClick = {
             navigateBack()
         }) {

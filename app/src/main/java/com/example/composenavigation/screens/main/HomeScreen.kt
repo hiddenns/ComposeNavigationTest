@@ -1,4 +1,4 @@
-package com.example.composenavigation.screens
+package com.example.composenavigation.screens.main
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -24,7 +24,7 @@ fun HomeScreen(
         Button(onClick = {
             navigateToSupport()
         }) {
-            Text(text = "Go to support")
+            Text(text = "Go to Support")
         }
         Button(onClick = {
             navigateToProfile()

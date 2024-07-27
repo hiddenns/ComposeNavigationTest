@@ -11,7 +11,8 @@ import androidx.compose.ui.Modifier
 
 @Composable
 fun SplashScreen(
-    navigateToLogin: () -> Unit
+    navigateToLogin: () -> Unit,
+    navigateToHome: () -> Unit
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -23,6 +24,11 @@ fun SplashScreen(
             navigateToLogin()
         }) {
             Text(text = "To login!")
+        }
+        Button(onClick = {
+            navigateToHome()
+        }) {
+            Text(text = "To home!")
         }
     }
 }

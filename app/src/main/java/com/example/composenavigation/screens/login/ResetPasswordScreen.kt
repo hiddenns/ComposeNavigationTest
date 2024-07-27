@@ -1,4 +1,4 @@
-package com.example.composenavigation.screens
+package com.example.composenavigation.screens.login
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,7 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-fun RegisterScreen(
+fun ResetPasswordScreen(
     navigateBack: () -> Unit,
 ) {
     Column(
@@ -19,12 +19,12 @@ fun RegisterScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Hello register!"
+            text = "Hello reset!"
         )
-        Button(onClick = {
-            navigateBack()
-        }) {
-            Text(text = "Back")
+        Button(onClick = { navigateBack() }) {
+            Text(
+                text = "Back"
+            )
         }
     }
 }

@@ -10,10 +10,10 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.composenavigation.screens.HomeScreen
-import com.example.composenavigation.screens.ProfileScreen
 import com.example.composenavigation.screens.SplashScreen
-import com.example.composenavigation.screens.SupportScreen
+import com.example.composenavigation.screens.main.HomeScreen
+import com.example.composenavigation.screens.main.ProfileScreen
+import com.example.composenavigation.screens.main.SupportScreen
 
 sealed class AppNavigationItem(val route: String) {
     data object Splash : AppNavigationItem(route = "splash_route")
@@ -31,6 +31,7 @@ fun MainNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController,
     startDestination: String = AppNavigationItem.Splash.route,
+    showBottomNavigation: (isVisible: Boolean) -> Unit
 ) {
     NavHost(
         modifier = modifier,
@@ -38,9 +39,27 @@ fun MainNavHost(
         startDestination = startDestination
     ) {
         composable(AppNavigationItem.Splash.route) {
-            SplashScreen(navigateToLogin = { navController.navigate(route = AppNavigationItem.Login.route) })
+            SplashScreen(
+                navigateToLogin = { navController.navigate(route = AppNavigationItem.Login.route) },
+                navigateToHome = {
+                    navController.navigate(AppNavigationItem.BottomNavItem.Home.route) {
+                        showBottomNavigation(true)
+                        popUpTo(0)
+                    }
+                }
+            )
         }
-        composable(AppNavigationItem.Login.route) { LoginNavHost() }
+        composable(AppNavigationItem.Login.route) {
+            LoginNavHost(
+                showBottomNavigation = showBottomNavigation,
+                navigateToProfile = {
+                    navController.navigate(AppNavigationItem.BottomNavItem.Profile.route) {
+                        showBottomNavigation(true)
+                        popUpTo(0)
+                    }
+                }
+            )
+        }
         composable(AppNavigationItem.BottomNavItem.Home.route) {
             HomeScreen(
                 navigateToSupport = { navController.navigate(AppNavigationItem.BottomNavItem.Support.route) },
