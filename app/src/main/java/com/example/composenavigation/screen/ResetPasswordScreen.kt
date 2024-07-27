@@ -8,12 +8,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavHostController
-import com.example.composenavigation.navigation.AppNavigationItem
-import com.example.composenavigation.navigation.LoginNavigationItem
 
 @Composable
-fun ResetPasswordScreen(navController: NavHostController) {
+fun ResetPasswordScreen(
+    navigateBack: () -> Unit,
+) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -22,9 +21,9 @@ fun ResetPasswordScreen(navController: NavHostController) {
         Text(
             text = "Hello reset!"
         )
-        Button(onClick = {}) {
+        Button(onClick = { navigateBack() }) {
             Text(
-                text = ""
+                text = "Back"
             )
         }
     }

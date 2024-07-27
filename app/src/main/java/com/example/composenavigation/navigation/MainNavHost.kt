@@ -5,8 +5,6 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import com.example.composenavigation.screen.LoginScreen
 import com.example.composenavigation.screen.SplashScreen
 
 sealed class AppNavigationItem(val route: String) {
@@ -26,7 +24,11 @@ fun MainNavHost(
         startDestination = startDestination
     ) {
         composable(AppNavigationItem.Splash.route) {
-            SplashScreen(navController)
+            SplashScreen(
+                navigateToLogin = {
+                    navController.navigate(route = AppNavigationItem.Login.route)
+                }
+            )
         }
         composable(AppNavigationItem.Login.route) {
             LoginNavHost()

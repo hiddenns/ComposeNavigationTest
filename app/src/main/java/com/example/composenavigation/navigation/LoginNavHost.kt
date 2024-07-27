@@ -9,9 +9,8 @@ import androidx.navigation.compose.rememberNavController
 import com.example.composenavigation.screen.LoginScreen
 import com.example.composenavigation.screen.RegisterScreen
 import com.example.composenavigation.screen.ResetPasswordScreen
-import com.example.composenavigation.screen.SplashScreen
 
-sealed class LoginNavigationItem(val route: String) {
+sealed class LoginNavigationItem {
     data object ResetPassword : AppNavigationItem(route = "ResetPassword_route")
     data object Register : AppNavigationItem(route = "Register_route")
     data object Login : AppNavigationItem(route = "Login_page_route")
@@ -29,13 +28,20 @@ fun LoginNavHost(
         startDestination = startDestination
     ) {
         composable(LoginNavigationItem.Login.route) {
-            LoginScreen(navController)
+            LoginScreen(
+                navigateToRegister = { navController.navigate(LoginNavigationItem.Register.route) },
+                navigateToResetPassword = { navController.navigate(LoginNavigationItem.ResetPassword.route) }
+            )
         }
         composable(LoginNavigationItem.Register.route) {
-            RegisterScreen(navController)
+            RegisterScreen(
+                navigateBack = { navController.popBackStack() }
+            )
         }
         composable(LoginNavigationItem.ResetPassword.route) {
-            ResetPasswordScreen(navController)
+            ResetPasswordScreen(
+                navigateBack = { navController.popBackStack() }
+            )
         }
     }
 }

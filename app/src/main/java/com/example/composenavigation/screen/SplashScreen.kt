@@ -8,25 +8,21 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavHostController
-import com.example.composenavigation.navigation.AppNavigationItem
 
 @Composable
-fun SplashScreen(navController: NavHostController) {
+fun SplashScreen(
+    navigateToLogin: () -> Unit
+) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(
-            text = "Hello splash!"
-        )
+        Text(text = "Hello splash!")
         Button(onClick = {
-            navController.navigate(route = AppNavigationItem.Login.route)
+            navigateToLogin()
         }) {
-            Text(
-                text = "To login!"
-            )
+            Text(text = "To login!")
         }
     }
 }

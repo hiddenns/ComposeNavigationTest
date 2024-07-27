@@ -8,30 +8,27 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavHostController
-import com.example.composenavigation.navigation.LoginNavigationItem
 
 @Composable
-fun LoginScreen(navController: NavHostController) {
+fun LoginScreen(
+    navigateToRegister: () -> Unit,
+    navigateToResetPassword: () -> Unit,
+) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(
-            text = "Hello login!"
-        )
-        Button(onClick = { navController.navigate(LoginNavigationItem.Register.route) }) {
-            Text(
-                text = "Go to Register"
-            )
+        Text(text = "Hello login!")
+        Button(onClick = {
+            navigateToRegister()
+        }) {
+            Text(text = "Go to Register")
         }
         Button(onClick = {
-            navController.navigate(LoginNavigationItem.ResetPassword.route)
+            navigateToResetPassword()
         }) {
-            Text(
-                text = "Go to Reset password"
-            )
+            Text(text = "Go to Reset password")
         }
     }
 }
