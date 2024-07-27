@@ -1,4 +1,4 @@
-package com.example.composenavigation.screen
+package com.example.composenavigation.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,19 +10,21 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-fun SplashScreen(
-    navigateToLogin: () -> Unit
+fun RegisterScreen(
+    navigateBack: () -> Unit,
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Hello splash!")
+        Text(
+            text = "Hello register!"
+        )
         Button(onClick = {
-            navigateToLogin()
+            navigateBack()
         }) {
-            Text(text = "To login!")
+            Text(text = "Back")
         }
     }
 }

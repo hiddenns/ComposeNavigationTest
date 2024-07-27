@@ -6,14 +6,14 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.composenavigation.screen.LoginScreen
-import com.example.composenavigation.screen.RegisterScreen
-import com.example.composenavigation.screen.ResetPasswordScreen
+import com.example.composenavigation.screens.LoginScreen
+import com.example.composenavigation.screens.RegisterScreen
+import com.example.composenavigation.screens.ResetPasswordScreen
 
-sealed class LoginNavigationItem {
-    data object ResetPassword : AppNavigationItem(route = "ResetPassword_route")
-    data object Register : AppNavigationItem(route = "Register_route")
-    data object Login : AppNavigationItem(route = "Login_page_route")
+private sealed class LoginNavigationItem(val route: String) {
+    data object ResetPassword : LoginNavigationItem(route = "ResetPassword_route")
+    data object Register : LoginNavigationItem(route = "Register_route")
+    data object Login : LoginNavigationItem(route = "Login_page_route")
 }
 
 @Composable
